@@ -387,7 +387,7 @@ ID="$(cat /etc/ADM-db/Admin-ID)"
 		read foo
 	} || {
 		MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		MENSAJE+="Esto es un mensaje de prueba!   2\n"
+		MENSAJE+="Esto es un mensaje de prueba!   2 3\n"
 		MENSAJE+="$bar\n"  # Esta línea ahora incluirá la barra correctamente
 		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
 		curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
