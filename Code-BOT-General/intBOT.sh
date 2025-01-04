@@ -369,70 +369,71 @@ bot_gen
 
 msj_prueba () {
 
-TOKEN="$(cat /etc/ADM-db/token)"
-ID="$(cat /etc/ADM-db/Admin-ID)"
+    TOKEN="$(cat /etc/ADM-db/token)"
+    ID="$(cat /etc/ADM-db/Admin-ID)"
 
-# Verifica si el TOKEN y el ID están disponibles
-[[ -z $TOKEN ]] && {
-	clear
-	echo -e "$bar"
-	echo -e "\033[1;37m Aun no ha ingresado el token\n No se puede enviar ningun mensaje!"
-	echo -e "$bar"
-	read foo
-} || {
-	[[ -z $ID ]] && {
-		clear
-		echo -e "$bar"
-		echo -e "\033[1;37m Aun no ha ingresado el ID\n No se puede enviar ningun mensaje!"
-		echo -e "$bar"
-		read foo
-	} || {
-		# Crear el mensaje básico
-		MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		MENSAJE+="Esto es un mensaje de prueba!\n"
-		MENSAJE+="$bar\n"
+    # Verifica si el TOKEN y el ID están disponibles
+    [[ -z $TOKEN ]] && {
+        clear
+        echo -e "$bar"
+        echo -e "\033[1;37m Aun no ha ingresado el token\n No se puede enviar ningun mensaje!"
+        echo -e "$bar"
+        read foo
+    } || {
+        [[ -z $ID ]] && {
+            clear
+            echo -e "$bar"
+            echo -e "\033[1;37m Aun no ha ingresado el ID\n No se puede enviar ningun mensaje!"
+            echo -e "$bar"
+            read foo
+        } || {
+            # Crear el mensaje básico
+            MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
+            MENSAJE+="Esto es un mensaje de prueba!\n"
+            MENSAJE+="$bar\n"
 
-		# Pregunta si se desea agregar una URL de imagen o texto adicional
-		echo -e "\033[1;37m ¿Quieres agregar una URL de una imagen o algún texto adicional? (s/n)"
-		read -p "Opción: " opcion
+            # Pregunta si se desea agregar una URL de imagen o texto adicional
+            echo -e "\033[1;37m ¿Quieres agregar una URL de una imagen o algún texto adicional? (s/n)"
+            read -p "Opción: " opcion
 
-		if [[ $opcion == "s" || $opcion == "S" ]]; then
-			# Pregunta si se desea agregar una URL de imagen
-			echo -e "\033[1;37m ¿Quieres agregar una URL de imagen? (s/n)"
-			read -p "Opción: " agregar_imagen
+            if [[ $opcion == "s" || $opcion == "S" ]]; then
+                # Pregunta si se desea agregar una URL de imagen
+                echo -e "\033[1;37m ¿Quieres agregar una URL de imagen? (s/n)"
+                read -p "Opción: " agregar_imagen
 
-			if [[ $agregar_imagen == "s" || $agregar_imagen == "S" ]]; then
-				# Solicita la URL de la imagen
-				read -p "Ingresa la URL de la imagen: " url_imagen
-				MENSAJE+="\nImagen: $url_imagen\n"
-			fi
+                if [[ $agregar_imagen == "s" || $agregar_imagen == "S" ]]; then
+                    # Solicita la URL de la imagen
+                    read -p "Ingresa la URL de la imagen: " url_imagen
+                    MENSAJE+="\n[Imagen de ejemplo]($url_imagen)\n"
+                fi
 
-			# Pregunta si se desea agregar texto adicional
-			echo -e "\033[1;37m ¿Quieres agregar texto adicional? (s/n)"
-			read -p "Opción: " agregar_texto
+                # Pregunta si se desea agregar texto adicional
+                echo -e "\033[1;37m ¿Quieres agregar texto adicional? (s/n)"
+                read -p "Opción: " agregar_texto
 
-			if [[ $agregar_texto == "s" || $agregar_texto == "S" ]]; then
-				# Solicita el texto adicional
-				read -p "Ingresa el texto adicional: " texto_adicional
-				MENSAJE+="$texto_adicional\n"
-			fi
-		fi
+                if [[ $agregar_texto == "s" || $agregar_texto == "S" ]]; then
+                    # Solicita el texto adicional
+                    read -p "Ingresa el texto adicional: " texto_adicional
+                    MENSAJE+="$texto_adicional\n"
+                fi
+            fi
 
-		# Enviar mensaje por Telegram
-		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-		curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
+            # Enviar mensaje por Telegram usando Markdown
+            URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+            curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" -d parse_mode="Markdown" &>/dev/null
 
-		# Mostrar mensaje enviado exitosamente
-		clear
-		echo -e "---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		echo -e "\033[1;37m Mensaje enviado Exitosamente...!"
-		echo -e "$bar"
-		sleep 3s
-	}
+            # Mostrar mensaje enviado exitosamente
+            clear
+            echo -e "---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
+            echo -e "\033[1;37m Mensaje enviado Exitosamente...!"
+            echo -e "$bar"
+            sleep 3s
+        }
+    }
+
+    bot_gen
 }
 
-bot_gen
-}
 
 
 
