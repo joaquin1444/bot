@@ -366,7 +366,6 @@ fi
 bot_gen
 
 }
-
 msj_prueba () {
 
 TOKEN="$(cat /etc/ADM-db/token)"
@@ -375,20 +374,20 @@ ID="$(cat /etc/ADM-db/Admin-ID)"
 [[ -z $TOKEN ]] && {
 	clear
 	echo -e "$bar"
-	echo -e "\033[1;37m Aun no a ingresado el token\n No se puede enviar ningun mensaje!"
+	echo -e "\033[1;37m Aun no ha ingresado el token\n No se puede enviar ningun mensaje!"
 	echo -e "$bar"
 	read foo
 } || {
 	[[ -z $ID ]] && {
 		clear
 		echo -e "$bar"
-		echo -e "\033[1;37m Aun no a ingresado el ID\n No se puede enviar ningun mensaje!"
+		echo -e "\033[1;37m Aun no ha ingresado el ID\n No se puede enviar ningun mensaje!"
 		echo -e "$bar"
 		read foo
 	} || {
 		MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		MENSAJE+="Esto es un mensaje de prueba!   2 3\n"
-		MENSAJE+="$bar\n"  # Esta línea ahora incluirá la barra correctamente
+		MENSAJE+="Esto es un mensaje de prueba!\n"
+		MENSAJE+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"  # Elimina la barra de color
 		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
 		curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
 		clear
@@ -401,6 +400,7 @@ ID="$(cat /etc/ADM-db/Admin-ID)"
 
 bot_gen
 }
+
 
 
 
