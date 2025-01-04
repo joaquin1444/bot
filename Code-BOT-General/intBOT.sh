@@ -423,88 +423,82 @@ tput cuu1 && tput dl1
 
 
 
-
-addnewmss() {
-    echo -e "${cor[3]} ¿DESEAS AÑADIR OTRO SMS?"
-    read -p " [S/N]: " -e -i s sshsn
-    tput cuu1 && tput dl1
-    tput cuu1 && tput dl1
-    [[ "$sshsn" = @(s|S|y|Y) ]] && {
-        foc=$((foc + 1))
-        read -p " $foc TEXTO: " addmss 
-        MSS+="$addmss\n"
-        addnewmss
-    }
-}
-
-msj_ind() {
-    foc=1
+msj_ind () {
     TOKEN="$(cat /etc/ADM-db/token)"
-    bar="====================================="
-
     echo -e "$bar"
-    echo -e "  \033[1;37mIngrese su ID de telegram a Mensajear"
+    echo -e "  \033[1;37mIngrese su ID de Telegram para enviar un mensaje"
     echo -e "$bar"
-    read -p "ID: " ID 
+    
+    # Solicitar ID si no está disponible
+    read -p "ID: " ID
     [[ -z $ID ]] && ID="$(cat /etc/ADM-db/Admin-ID)"
-
+    
+    # Verificar si el token está disponible
     if [[ -z $TOKEN ]]; then
         clear
         echo -e "$bar"
-        echo -e "\033[1;37m Aún no has ingresado el token\n No se puede enviar ningún mensaje!"
+        echo -e "\033[1;37m Aún no ha ingresado el token\n No se puede enviar ningún mensaje!"
         echo -e "$bar"
-        read -p "Presiona ENTER para continuar..."
-        return 1
+        read -p "Presione ENTER para continuar"
+        return
     fi
 
+    # Verificar si ID está vacío
     if [[ -z $ID ]]; then
         clear
         echo -e "$bar"
-        echo -e "\033[1;37m Aún no has ingresado el ID\n No se puede enviar ningún mensaje!"
+        echo -e "\033[1;37m Aún no ha ingresado el ID\n No se puede enviar ningún mensaje!"
         echo -e "$bar"
-        read -p "Presiona ENTER para continuar..."
-        return 1
+        read -p "Presione ENTER para continuar"
+        return
     fi
 
-    MSS=""
+    # Solicitar mensaje
+    MENSAJE="Hola, Mensaje de Prueba del BotGen Generador!"
     echo -e "$bar"
-    echo -e "  \033[1;37mINGRESA EL MENSAJE A ENVIAR"
+    echo -e "  \033[1;37mINGRESE EL MENSAJE A ENVIAR"
     echo -e "$bar"
-    read -p " $foc TEXTO: " addmss 
+    read -p "Texto: " addmss
     MSS+="$addmss\n"
-    addnewmss
+    
+    # Preguntar si se desea agregar otro mensaje
+    echo -e "${cor[3]} ¿DESEAS AÑADIR OTRO MENSAJE? (S/N)"
+    read -p "Respuesta: " -e -i s sshsn
+    tput cuu1 && tput dl1
+    tput cuu1 && tput dl1
 
-    MENSAJE='  ---------📩MENSAJE RECIBIDO📩--------\n'
-    MENSAJE+="$MSS"
+    [[ "$sshsn" =~ ^[sSyY]$ ]] && msj_ind
 
+    # Mensaje final con todos los agregados
+    MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
+    MENSAJE+="$MSS\n"
+
+    # Solicitar ruta de la imagen
     echo -e "$bar"
-    echo -e "  \033[1;37mPEGA RUTA DE IMAGEN"
+    echo -e "  \033[1;37mPEGA LA RUTA DE LA IMAGEN"
     echo -e "$bar"
-    read -p "IMG: " img 
+    read -p "Imagen: " img
+    
+    # Si no hay imagen, usar una predeterminada
+    [[ -z $img ]] && img="https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/favi.png"
 
-    [[ -z $MENSAJE ]] && MENSAJE="Hola, Mensaje de Prueba del BotGen Generador!"
-
+    # Enviar imagen y mensaje a Telegram
     URL="https://api.telegram.org/bot$TOKEN/sendMessage"
     URG="https://api.telegram.org/bot$TOKEN/sendPhoto"
+    curl -s -X POST $URG -F chat_id=$ID -F photo="@$img"
+    curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
 
-    # Enviar la imagen
-    curl -s -X POST "$URG" -F chat_id=$ID -F photo="@$img" &>/dev/null
-
-    # Enviar el mensaje
-    curl -s -X POST "$URL" -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
-
-    clear
+    echo -e "@$img"
     echo -e "$bar"
-    echo -e "\033[1;37m Mensaje enviado Exitosamente...!"
+    echo -e "\033[1;37m Mensaje enviado exitosamente...!"
     echo -e "$bar"
-    read -p "ENTER PARA Continuar"
+    read -p "Presione ENTER para continuar"
+    
+    # Llamada a bot_gen al final
+    bot_gen
 }
 
-bot_gen() {
-    msj_ind
-}
 
-bot_gen
 
 act-bot () {
 echo "Respaldando TOKEN y ADMINISTRADOR" 
