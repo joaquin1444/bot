@@ -4,7 +4,7 @@ unset readvalue
 [[ ! -d /etc/http-shell ]] && mkdir /etc/http-shell
 [[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="cabecalho ferramentas menu menu_credito menu_inst payloads PDirect.py PGet.py POpen.py PPriv.py PPub.py shadowsocks.sh ultrahost usercodes v-local.log"
 IVAR="/etc/http-instas"
-source <(curl -sSL https://raw.githubusercontent.com/emirjorge/premium-bot/master/Otros/msg) >/dev/null
+source <(curl -sSL https://raw.githubusercontent.com/joaquin1444/bot/master/Otros/msg) >/dev/null
 #!/bin/bash
 # menu maker (opciones 1, 2, 3,.....)
 flech='➮' cOlM='⁙' && TOP='‣' && TTini='=====>>►► 🐲' && cG='/c' && TTfin='🐲 ◄◄<<=====' && TTcent='💥' && RRini='【  ★' && RRfin='★  】' && CHeko='✅' && ScT='🛡️' && FlT='⚔️' && BoLCC='🪦' && ceLL='🧬' && aLerT='⚠️' && _kl1='ghkey' && lLaM='🔥' && pPIniT='∘' && bOTg='🤖' && kL10='tc' && rAy='⚡' && tTfIn='】' && TtfIn='【' tTfLe='►' && am1='/e' && rUlq='🔰' && h0nG='🍄' && lLav3='🗝️' && m3ssg='📩' && pUn5A='⚜' && p1t0='•' nib="${am1}${kL10}"
@@ -200,7 +200,7 @@ del() {
 
 [[ -d /bin/ejecutar ]] && {
     [[ ! -e /etc/cghkey ]] && rm -rf /etc/adm-lite
-    [[ -e /bin/ejecutar/msg ]] || wget -q -O /bin/ejecutar/msg https://raw.githubusercontent.com/emirjorge/premium-bot/master/Otros/msg
+    [[ -e /bin/ejecutar/msg ]] || wget -q -O /bin/ejecutar/msg https://raw.githubusercontent.com/joaquin1444/bot/master/Otros/msg
 } || mkdir /bin/ejecutar
 cor[0]="\033[0m"
 cor[1]="\033[1;34m"
@@ -399,7 +399,7 @@ fix_key() {
     read -p " RESELLER deL Keys : " nomkey
     [[ $nomkey = 0 ]] && return
     [[ -z $nomkey ]] && {
-        [[ -e /etc/menu_ito ]] && nomkey="$(cat /etc/menu_ito)" || nomkey="$(curl -sSL "https://raw.githubusercontent.com/emirjorge/premium-bot/master/Otros/menu_credito")"
+        [[ -e /etc/menu_ito ]] && nomkey="$(cat /etc/menu_ito)" || nomkey="$(curl -sSL "https://raw.githubusercontent.com/joaquin1444/bot/master/Otros/menu_credito")"
     }
     msg -bar
     echo " Bienvenido, Porfavor ingresa el numero de keys a generar"
@@ -425,7 +425,7 @@ fix_key() {
     #$(cat < /etc/ADM-db/resell)
     msg -bar
     echo -e " ${ScT}  *INSTALADOR UNIVERSAL*   ${ScT}"
-    msg -bar && echo -ne "$(msg -verd "apt update -y &&") $(msg -aqua "apt upgrade -y &&\n") " && msg -bra "\033[7;49;35m wget -q apt update -y && apt upgrade -y && wget -q https://raw.githubusercontent.com/emirjorge/premium-bot/master/ScriptCGH/setup  && chmod 777 setup && ./setup --ADMcgh"
+    msg -bar && echo -ne "$(msg -verd "apt update -y &&") $(msg -aqua "apt upgrade -y &&\n") " && msg -bra "\033[7;49;35m wget -q apt update -y && apt upgrade -y && wget -q https://raw.githubusercontent.com/joaquin1444/bot/master/ScriptCGH/setup  && chmod 777 setup && ./setup --ADMcgh"
     msg -bar
     [[ -e /etc/menu_numito ]] && menumito="$(cat /etc/menu_numito)" || menumito="https://t.me/ChumoGH_bot"
     [[ -z $vkey ]] && vkey="@ChumoGH"
@@ -640,7 +640,7 @@ chmod +x ${ARQ}/$1
 
 bot_menu() {
     CIDdir="/etc/ADM-db" && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
-    [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
+    [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/joaquin1444/bot/master/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
     sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
     source ${CIDdir}/confbot.sh && rm -f ${CIDdir}/confbot.sh
     bot_conf
@@ -673,7 +673,7 @@ act_botgen() {
     echo -e "\033[1;33m Descargando archivos... ESPERE "
     msg -bar
     mkdir -p /root/update &>/dev/null
-    wget -q --no-check-certificate -O $HOME/files.tar https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-Comandos/files.tar
+    wget -q --no-check-certificate -O $HOME/files.tar https://raw.githubusercontent.com/joaquin1444/bot/master/Code-BOT-Comandos/files.tar
     [[ -d $HOME/update ]] && rm -rf $HOME/update/* || mkdir $HOME/update
     [[ -e $HOME/files.tar ]] && tar xpf $HOME/files.tar -C $HOME/update && rm -f $HOME/files.tar
     echo 999 > ${CIDdir}/limit

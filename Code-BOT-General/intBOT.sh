@@ -1,5 +1,5 @@
 #!/bin/bash
-[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/emirjorge/premium-bot/master/Otros/msg)
+[[ -e /bin/ejecutar/msg ]] && source /bin/ejecutar/msg || source <(curl -sSL https://raw.githubusercontent.com/joaquin1444/bot/master/Otros/msg)
 bar="$(msg -bar3)"
 [[ -e /etc/systemd/system/btkill.service ]] && systemctl restart btkill.service &>/dev/null
 tr=${id}
@@ -57,9 +57,9 @@ msg -bar
 [[ -z $keybot ]] && {
 rm -f /bin/downloadbot
 [[ -e /bin/downloadbot ]] && link="$(cat < /bin/downloadbot)" || link='https://raw.githubusercontent.com'
-permited=$(curl -sSL "${link}/emirjorge/premium-bot/master/Control/Control-Bot") 
+permited=$(curl -sSL "${link}/joaquin1444/bot/master/Control/Control-Bot") 
 } || {
-permited=$(curl -sSL "${link}/emirjorge/premium-bot/master/Control/Control-Bot")
+permited=$(curl -sSL "${link}/joaquin1444/bot/master/Control/Control-Bot")
 }
   [[ $(echo $permited|grep "${IP}") = "" ]] || {
   clear
@@ -85,7 +85,7 @@ permited=$(curl -sSL "${link}/emirjorge/premium-bot/master/Control/Control-Bot")
   lv=$(($i+1))
   echo $lv > /etc/nivbot
   } || echo "1" > /etc/nivbot
-  v1=$(curl -sSL "https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-General/v-new.log")
+  v1=$(curl -sSL "https://raw.githubusercontent.com/joaquin1444/bot/master/Code-BOT-General/v-new.log")
   echo "$v1" > /etc/ADM-db/vercion  
   }
 }
@@ -227,7 +227,7 @@ msg -bar
 echo -e "\033[1;33mDescargando archivos... ESPERE "
 msg -bar
 mkdir -p /root/update &>/dev/null
-wget -q --no-check-certificate -O $HOME/files.tar https://raw.githubusercontent.com/emirjorge/premium-bot/master/Code-BOT-Comandos/files.tar
+wget -q --no-check-certificate -O $HOME/files.tar https://raw.githubusercontent.com/joaquin1444/bot/master/Code-BOT-Comandos/files.tar
 [[ -d $HOME/update ]] && rm -rf $HOME/update/* || mkdir $HOME/update
 [[ -e $HOME/files.tar ]] && tar xpf $HOME/files.tar -C $HOME/update && rm -f $HOME/files.tar
 echo 999 > ${CIDdir}/limit
