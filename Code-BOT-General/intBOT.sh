@@ -368,39 +368,76 @@ bot_gen
 }
 msj_prueba () {
 
-TOKEN="$(cat /etc/ADM-db/token)"
-ID="$(cat /etc/ADM-db/Admin-ID)"
+    TOKEN="$(cat /etc/ADM-db/token)"
+    ID="$(cat /etc/ADM-db/Admin-ID)"
+    [[ -z $TOKEN ]] && {
+        clear
+        echo -e "$bar"
+        echo -e "\033[1;37m Aun no ha ingresado el token\n No se puede enviar ningun mensaje!"
+        echo -e "$bar"
+        read foo
+    } || {
+        [[ -z $ID ]] && {
+            clear
+            echo -e "$bar"
+            echo -e "\033[1;37m Aun no ha ingresado el ID\n No se puede enviar ningun mensaje!"
+            echo -e "$bar"
+            read foo
+        } || {
 
-[[ -z $TOKEN ]] && {
-	clear
-	echo -e "$bar"
-	echo -e "\033[1;37m Aun no ha ingresado el token\n No se puede enviar ningun mensaje!"
-	echo -e "$bar"
-	read foo
-} || {
-	[[ -z $ID ]] && {
-		clear
-		echo -e "$bar"
-		echo -e "\033[1;37m Aun no ha ingresado el ID\n No se puede enviar ningun mensaje!"
-		echo -e "$bar"
-		read foo
-	} || {
-		MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		MENSAJE+="Esto es un mensaje de prueba!\n"
-		MENSAJE+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"  # Elimina la barra de color
-		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-		curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
-		clear
-		echo -e "---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		echo -e "\033[1;37m Mensaje enviado Exitosamente...!"
-		echo -e "$bar"
-		sleep 3s
-	}
+            MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
+            MENSAJE+="Esto es un mensaje de prueba!\n"
+            MENSAJE+="$bar\n"
+
+
+            eliminar_colores() {
+                echo "$1" | sed -r 's/\x1b\[[0-9;]*m//g'
+            }
+
+
+            MENSAJE=$(eliminar_colores "$MENSAJE")
+
+
+            echo -e "\033[1;37m ¿Quieres agregar una URL de una imagen o algún texto adicional? (s/n)"
+            read -p "Opción: " opcion
+
+            if [[ $opcion == "s" || $opcion == "S" ]]; then
+  
+                echo -e "\033[1;37m ¿Quieres agregar una URL de imagen? (s/n)"
+                read -p "Opción: " agregar_imagen
+
+                if [[ $agregar_imagen == "s" || $agregar_imagen == "S" ]]; then
+
+                    read -p "Ingresa la URL de la imagen: " url_imagen
+                    MENSAJE+="\n[Imagen de ejemplo]($url_imagen)\n"
+                fi
+
+                # Pregunta si se desea agregar texto adicional
+                echo -e "\033[1;37m ¿Quieres agregar texto adicional? (s/n)"
+                read -p "Opción: " agregar_texto
+
+                if [[ $agregar_texto == "s" || $agregar_texto == "S" ]]; then
+                    # Solicita el texto adicional
+                    read -p "Ingresa el texto adicional: " texto_adicional
+                    MENSAJE+="$texto_adicional\n"
+                fi
+            fi
+
+            # Enviar mensaje por Telegram usando Markdown
+            URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+            curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" -d parse_mode="Markdown" &>/dev/null
+
+            # Mostrar mensaje enviado exitosamente
+            clear
+            echo -e "---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
+            echo -e "\033[1;37m Mensaje enviado Exitosamente...!"
+            echo -e "$bar"
+            sleep 3s
+        }
+    }
+
+    bot_gen
 }
-
-bot_gen
-}
-
 
 
 
@@ -424,79 +461,67 @@ tput cuu1 && tput dl1
 
 
 msj_ind () {
-    TOKEN="$(cat /etc/ADM-db/token)"
-    echo -e "$bar"
-    echo -e "  \033[1;37mIngrese su ID de Telegram para enviar un mensaje"
-    echo -e "$bar"
-    
-    # Solicitar ID si no está disponible
-    read -p "ID: " ID
-    [[ -z $ID ]] && ID="$(cat /etc/ADM-db/Admin-ID)"
-    
-    # Verificar si el token está disponible
-    if [[ -z $TOKEN ]]; then
-        clear
-        echo -e "$bar"
-        echo -e "\033[1;37m Aún no ha ingresado el token\n No se puede enviar ningún mensaje!"
-        echo -e "$bar"
-        read -p "Presione ENTER para continuar"
-        return
-    fi
-
-    # Verificar si ID está vacío
-    if [[ -z $ID ]]; then
-        clear
-        echo -e "$bar"
-        echo -e "\033[1;37m Aún no ha ingresado el ID\n No se puede enviar ningún mensaje!"
-        echo -e "$bar"
-        read -p "Presione ENTER para continuar"
-        return
-    fi
-
-    # Solicitar mensaje
-    MENSAJE="Hola, Mensaje de Prueba del BotGen Generador!"
-    echo -e "$bar"
-    echo -e "  \033[1;37mINGRESE EL MENSAJE A ENVIAR"
-    echo -e "$bar"
-    read -p "Texto: " addmss
-    MSS+="$addmss\n"
-    
-    # Preguntar si se desea agregar otro mensaje
-    echo -e "${cor[3]} ¿DESEAS AÑADIR OTRO MENSAJE? (S/N)"
-    read -p "Respuesta: " -e -i s sshsn
-    tput cuu1 && tput dl1
-    tput cuu1 && tput dl1
-
-    [[ "$sshsn" =~ ^[sSyY]$ ]] && msj_ind
-
-    # Mensaje final con todos los agregados
-    MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-    MENSAJE+="$MSS\n"
-
-    # Solicitar ruta de la imagen
-    echo -e "$bar"
-    echo -e "  \033[1;37mPEGA LA RUTA DE LA IMAGEN"
-    echo -e "$bar"
-    read -p "Imagen: " img
-    
-    # Si no hay imagen, usar una predeterminada
-    [[ -z $img ]] && img="https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/favi.png"
-
-    # Enviar imagen y mensaje a Telegram
-    URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-    URG="https://api.telegram.org/bot$TOKEN/sendPhoto"
-    curl -s -X POST $URG -F chat_id=$ID -F photo="@$img"
-    curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
-
-    echo -e "@$img"
-    echo -e "$bar"
-    echo -e "\033[1;37m Mensaje enviado exitosamente...!"
-    echo -e "$bar"
-    read -p "Presione ENTER para continuar"
-    
-    # Llamada a bot_gen al final
-    bot_gen
+foc=1
+TOKEN="$(cat /etc/ADM-db/token)"
+echo -e "$bar" 
+echo -e "  \033[1;37mIngrese su ID de telegram a Mensajear"
+echo -e "$bar"
+read -p "ID: " ID 
+[[ -z $ID ]] && ID="$(cat /etc/ADM-db/Admin-ID)"
+[[ -z $TOKEN ]] && {
+	clear
+	echo -e "$bar"
+	echo -e "\033[1;37m Aun no a ingresado el token\n No se puede enviar ningun mensaje!"
+	echo -e "$bar"
+	read foo
+} || {
+	[[ -z $ID ]] && {
+		clear
+		echo -e "$bar"
+		echo -e "\033[1;37m Aun no a ingresado el ID\n No se puede enviar ningun mensaje!"
+		echo -e "$bar"
+		read foo
+	} || {
+		MENSAJE="Hola, Mensale de Prueba del BotGen Generador!"
+echo -e "$bar"
+echo -e "  \033[1;37mINGRESA EL MENSAJE A ENVIAR"
+echo -e "$bar"
+read -p " $foc TEXTO: " addmss 
+MSS+="$addmss\n"
+echo -e "${cor[3]} ¿DESEAS AÑADIR OTRO SMS ? "
+read -p " [S/N]: " -e -i s sshsn
+tput cuu1 && tput dl1
+tput cuu1 && tput dl1
+[[ "$sshsn" = @(s|S|y|Y) ]] && addnewmss
+MENSAJE='  ---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n'
+MENSAJE+="$MSS \n "
+echo -e "$bar"
+echo -e "  \033[1;37mPEGA RUTA DE IMAGEN"
+echo -e "$bar"
+read -p "IMG: " img 
+#[[ -z $img ]] && img="https://raw.githubusercontent.com/ChumoGH/ChumoGH-Script/master/favi.png"
+#[[ -z $img ]] && img="/var/www/html/bot_vmess_qr.png"
+[[ -z $MENSAJE ]] && MENSAJE="Hola, Mensaje de Prueba del BotGen Generador!"
+		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+		URG="https://api.telegram.org/bot$TOKEN/sendPhoto"
+		curl -s -X POST $URG -F chat_id=$ID -F photo="@$img" #-F caption="<code>New Script @joaquinH2</code>" #-F width="100" -F height="100"
+		curl -s -X POST $URL -d chat_id=$ID -d text="$(echo -e "$MENSAJE")" &>/dev/null
+#		clear
+		echo -e "@$img"
+		echo -e "$bar"
+		echo -e "\033[1;37m Mensaje enviado Exitosamente...!"
+		echo -e "$bar"
+		read -p "ENTER PARA Continuar"
+	}
 }
+
+bot_gen
+}
+
+
+
+
+
 
 
 

@@ -199,7 +199,6 @@ del() {
 }
 
 [[ -d /bin/ejecutar ]] && {
-    [[ ! -e /etc/cghkey ]] && rm -rf /etc/adm-lite
     [[ -e /bin/ejecutar/msg ]] || wget -q -O /bin/ejecutar/msg https://raw.githubusercontent.com/joaquin1444/bot/master/Otros/msg
 } || mkdir /bin/ejecutar
 cor[0]="\033[0m"

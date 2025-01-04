@@ -58,13 +58,7 @@ bot_retorno+='<pre>apt update -y; apt upgrade -y; wget https://github.com/joaqui
 bot_retorno+="$LINE\n"
 bot_retorno+="     𝙍𝙚𝙘𝙤𝙢𝙚𝙣𝙙𝙖𝙙𝙤 𝙐𝙗𝙪𝙣𝙩𝙪 20.04  \n   🧬🧬 S.O Ubuntu 16 a 22 X64(x86|ARM) 🧬🧬 \n          Debian 7,8,9,11 (x64) \n  🪦 ADQUIERE TU ACCESO EN @${nBot} 🛡️⚔️\n"
 bot_retorno+="$LINE\n"
-msj_fun
-bot_file+="  🛡️  𝙸𝚗𝚜𝚝𝚊𝚕𝚊𝚍𝚘𝚛  𝙾𝚏𝚒𝚌𝚒𝚊𝚕 MOD-V6 🛡️ \n\n"
-bot_file+="apt update -y; apt upgrade -y; wget https://github.com/joaquin1444/MOD-V6/raw/main/script-v6/install -O install; chmod 755 install; ./install\n\n"
-bot_file+="  ${keyfinal} \n"
-echo -e ${bot_file} > ${keytxt}/key_${usrLOP}.txt
-upfile_fun ${keytxt}/key_${usrLOP}.txt
-rm ${keytxt}/key_${usrLOP}.txt
+
 }
 fun_list () {
 rm ${SCPT_DIR}/*.x.c &> /dev/null
