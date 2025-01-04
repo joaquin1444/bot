@@ -221,13 +221,50 @@ local bot_retorno="ID user botgen\n"
 	return 0
 }
 
-msj_chat () {
-	[[ ! -z ${callback_query_message_chat_id[$id]} ]] && var=${callback_query_message_chat_id[$id]} || var=${message_chat_id[$id]}
-		      ShellBot.sendChatAction --chat_id $var --action typing
-			  #ShellBot.deleteMessage --chat_id $var --message_id $1 
-	return 0
-}
+declare -a dark_jokes=(
+    "¿Qué es lo último que pensó el saltamontes cuando lo aplastaron? ¡Sus patas traseras!"
+    "¿Por qué los astronautas rompen con sus novias antes de ir al espacio? Porque no quieren estar atados."
+    "La muerte es la cura definitiva para la resaca."
+    "¿Qué es peor que un cadáver en el maletero? No tener maletero."
+    "¿Cómo se siente el agua cuando la congelas? Deshidratada."
+    "¿Qué es lo último que hace una abeja antes de morir? Un zumbido de despedida."
+    "El que ríe último, probablemente no entendió el chiste."
+    "¿Por qué los fantasmas son tan malos en las relaciones? Porque son transparentes."
+    "¿Cómo se siente un vegetariano en un matadero? Como una vaca en una fiesta de carnívoros."
+)
 
+msj_chat() {
+    local id=$1
+    # Determinar el ID del chat
+    [[ ! -z ${callback_query_message_chat_id[$id]} ]] && var=${callback_query_message_chat_id[$id]} || var=${message_chat_id[$id]}
+
+    # Indicar que el bot está "escribiendo"
+    ShellBot.sendChatAction --chat_id $var --action typing
+
+    # Seleccionar tres chistes al azar (ajusta según cuántos quieras mostrar)
+    local selected_jokes=()
+    local max_jokes=${#dark_jokes[@]}
+    local num_jokes=3  # Número de chistes a mostrar
+
+    for ((i=0; i<$num_jokes; i++)); do
+        local index=$((RANDOM % max_jokes))
+        while [[ " ${selected_jokes[@]} " =~ " ${dark_jokes[$index]} " ]]; do
+            index=$((RANDOM % max_jokes))
+        done
+        selected_jokes+=("${dark_jokes[$index]}")
+    done
+
+    # Construir el mensaje con los chistes seleccionados
+    local message="⚠️ Advertencia: Humor Negro ⚠️\n\n"
+    for joke in "${selected_jokes[@]}"; do
+        message+="$joke\n\n"
+    done
+
+    # Enviar el mensaje con los chistes
+    ShellBot.sendMessage --chat_id $var --text "$message"
+
+    return 0
+}
 msj_donar () {
 	[[ ! -z ${callback_query_message_chat_id[$id]} ]] && var=${callback_query_message_chat_id[$id]} || var=${message_chat_id[$id]}
 	      ShellBot.sendMessage --chat_id $var \
