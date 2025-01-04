@@ -642,7 +642,11 @@ bot_menu() {
     CIDdir="/etc/ADM-db" && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
     [[ ! -e "${CIDdir}/confbot.sh" ]] && wget --no-check-certificate -O ${CIDdir}/confbot.sh https://raw.githubusercontent.com/joaquin1444/bot/master/Code-BOT-General/intBOT.sh &>/dev/null && chmod +rwx ${CIDdir}/confbot.sh
     sed -i -e 's/\r$//' ${CIDdir}/confbot.sh
-    source ${CIDdir}/confbot.sh && rm -f ${CIDdir}/confbot.sh
+    if source ${CIDdir}/confbot.sh; then
+        rm -f ${CIDdir}/confbot.sh
+    else
+        echo -e "\033[1;31mError al ejecutar el script.\033[0m"
+    fi
     bot_conf
 }
 
