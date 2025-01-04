@@ -499,7 +499,6 @@ msj_ind () {
 }
 
 
-
 act-bot () {
 echo "Respaldando TOKEN y ADMINISTRADOR" 
 [[ -e /etc/ADM-db/token ]] && mv /etc/ADM-db/token /root/token
