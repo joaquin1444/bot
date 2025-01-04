@@ -222,7 +222,7 @@ tittle() {
     killall kswapd0 ksoftirqd >/dev/null 2>&1
     clear && clear
     msg -bar
-    echo -e "  \033[7;49;35m${TTini} GEN ChumoGH${TTcent}VPS ${TTfin}   \033[0m"
+    echo -e "  \033[7;49;35m${TTini} MOD-V6${TTcent}VPS ${TTfin}   \033[0m"
 }
 
 check_ip() {
