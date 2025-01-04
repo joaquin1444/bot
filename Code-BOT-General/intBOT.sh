@@ -392,6 +392,14 @@ msj_prueba () {
             MENSAJE+="Esto es un mensaje de prueba!\n"
             MENSAJE+="$bar\n"
 
+            # Función para eliminar los códigos de color
+            eliminar_colores() {
+                echo "$1" | sed -r 's/\x1b\[[0-9;]*m//g'
+            }
+
+            # Eliminar los códigos de color de la variable MENSAJE
+            MENSAJE=$(eliminar_colores "$MENSAJE")
+
             # Pregunta si se desea agregar una URL de imagen o texto adicional
             echo -e "\033[1;37m ¿Quieres agregar una URL de una imagen o algún texto adicional? (s/n)"
             read -p "Opción: " opcion
