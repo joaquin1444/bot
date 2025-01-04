@@ -1,0 +1,14 @@
+#!/bin/bash
+link_src () {
+	bot_retorno="$LINE\n"
+	bot_retorno+="   🧬🧬 Soporte - OS 🧬🧬 \n  Ubuntu - 16 - 18 - 20 (x64)\n          Debian 8,9,10 (x64) \n 𝙍𝙚𝙘𝙤𝙢𝙚𝙣𝙙𝙖𝙙𝙤 𝙐𝙗𝙪𝙣𝙩𝙪 20.04  \n  🪦 Solicita Creditos de tu KEY 🛡️⚔️\n"
+	bot_retorno+="Verifica tus Keys, https://t.me/joaquinH2 Reseller : @joaquinH2\n"
+	bot_retorno+="$LINE\n"
+	bot_retorno+="<code>apt update -y; apt upgrade -y; wget https://github.com/joaquin1444/MOD-V6/raw/main/script-v6/install -O install && chmod +x install && ./install</code>\n"
+	bot_retorno+="$LINE\n"
+	bot_retorno+="$LINE\n"
+	bot_retorno+="  🛡️  𝙸𝚗𝚜𝚝𝚊𝚕𝚊𝚍𝚘𝚛  𝙾𝚏𝚒𝚌𝚒𝚊𝚕 NOD-V6 FOR ARM 🛡️ \n"
+	bot_retorno+="$LINE\n"
+	bot_retorno+="<code>apt update -y; apt upgrade -y; wget https://github.com/joaquin1444/MOD-V6/raw/main/script-v6/install -O install && chmod +x install && ./install</code>\n"
+msj_fun
+}

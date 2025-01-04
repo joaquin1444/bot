@@ -389,7 +389,11 @@ msj_prueba () {
     # Si ambos están presentes, envía el mensaje
     MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
     MENSAJE+="Esto es un mensaje de prueba!\n"
-    MENSAJE+="$bar\n"
+    MENSAJE+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    
+    # Elimina los códigos de color y otros caracteres especiales (si los hay)
+    MENSAJE=$(echo -e "$MENSAJE" | sed 's/\033\[[0-9;]*m//g')
+
     URL="https://api.telegram.org/bot$TOKEN/sendMessage"
     
     # Envío del mensaje a través de la API de Telegram
