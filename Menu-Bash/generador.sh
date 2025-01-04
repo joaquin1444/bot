@@ -42,7 +42,7 @@ tittle() {
     [[ -z $1 ]] && rt='adm-lite' || rt='ADMcgh'
     clear && clear
     msg -bar
-    echo -e "\033[1;44;44m   \033[1;33m=====>>►► 🐲 ChumoGH 💥 Plus 🐲 ◄◄<<=====  \033[0m \033[0;33m[$(less /etc/${rt}/v-local.log)]"
+    echo -e "\033[1;44;44m   \033[1;33m=====>>►► 🐲 MOD-V6 🐲 ◄◄<<=====  \033[0m \033[0;33m[$(less /etc/${rt}/v-local.log)]"
     msg -bar
 }
 in_opcion() {
@@ -428,7 +428,7 @@ fix_key() {
     msg -bar && echo -ne "$(msg -verd "apt update -y &&") $(msg -aqua "apt upgrade -y &&\n") " && msg -bra "\033[7;49;35m wget -q apt update -y && apt upgrade -y && wget -q https://raw.githubusercontent.com/joaquin1444/bot/master/ScriptCGH/setup  && chmod 777 setup && ./setup --ADMcgh"
     msg -bar
     [[ -e /etc/menu_numito ]] && menumito="$(cat /etc/menu_numito)" || menumito="https://t.me/ChumoGH_bot"
-    [[ -z $vkey ]] && vkey="@ChumoGH"
+    [[ -z $vkey ]] && vkey="@joaquinH2"
     echo -e " ${ceLL} Soporte : Ubuntu 14.04 - 16.04 - 18.04 - 20.04 - 21.04 - 22.04\n         S.O PREFERENTE 18.04"
     echo -e " Verificada: $vkey ${ScT} RESELLER ACTUAL : $nomkey" | pv -qL 80
     msg -bar
@@ -815,7 +815,7 @@ dropIP() {
     unset PIDGEN
     if [[ -e /var/www/html/ChumoGH/VPSbot/main/TeleBotGen/Control/Control-Bot ]]; then
         echo -e "[Unit]
-Description=BotGen Service by @ChumoGH
+Description=BotGen Service by @joaquinH2
 After=network.target
 StartLimitIntervalSec=0
 
@@ -859,7 +859,7 @@ menau() {
         figlet -f smslant "$(cat </etc/valkey)" | lolcat
         msg -bar
     } || {
-        figlet -p -f smslant "@ChumoGH" | lolcat
+        figlet -p -f smslant "@joaquinH2" | lolcat
         msg -bar
     }
     [[ ! $PID_GEN ]] && PID_GEN="\033[0;35m[\033[0;31mDETENIDO\033[0;35m]" || PID_GEN="\033[0;35m[\033[0;36mFUNCIONANDO\033[0;35m]"

@@ -1,6 +1,6 @@
-#CREADOR Henry Chumo | 25/08/2022
+#CREADOR  | 25/08/2022
 # UPDATE  | 20/08/2023
-#Alias : @ChumoGH
+#Alias : @joaquinH2
 # -*- ENCODING: UTF-8 -*-
 
 apt --fix-broken install
@@ -82,14 +82,14 @@ if ! [ $(id -u) = 0 ]; then
 clear
 		echo ""
 		echo " ===================================================="
-		echo " 	           	›21›21›21     Error Fatal!! x000e1  ›21›21›21"
+		echo " 	           	ï¿½21ï¿½21ï¿½21     Error Fatal!! x000e1  ï¿½21ï¿½21ï¿½21"
 		echo " ===================================================="
-		echo "                    œ40 Este script debe ejecutarse como root! œ40"
+		echo "                    ï¿½40 Este script debe ejecutarse como root! ï¿½40"
 
 		echo "                              Como Solucionarlo "
 		
-		echo "                            Ejecute el script así:"
-		echo "                               ‡30     ‡31 "
+		echo "                            Ejecute el script asï¿½:"
+		echo "                               ï¿½30     ï¿½31 "
 		echo "                                (  sudo -i )"
 		echo "                                   sudo su"
 		echo "                                 Retornando . . ."
@@ -100,9 +100,9 @@ fi
 
 function_verify () {
 echo "verify" > $(echo -e $(echo 2f62696e2f766572696679737973|sed 's/../\\x&/g;s/$/ /'))
-echo 'MOD @ChumoGH ChumoGHADM' > $(echo -e $(echo 2F7573722F6C69622F6C6963656E6365|sed 's/../\\x&/g;s/$/ /'))
+echo 'MOD @joaquinH2 ChumoGHADM' > $(echo -e $(echo 2F7573722F6C69622F6C6963656E6365|sed 's/../\\x&/g;s/$/ /'))
 [[ $(dpkg --get-selections|grep -w "libpam-cracklib"|head -1) ]] || apt-get install libpam-cracklib -y &> /dev/null
-echo -e '# Modulo @ChumoGH
+echo -e '# Modulo @joaquinH2
 password [success=1 default=ignore] pam_unix.so obscure sha512
 password requisite pam_deny.so
 password required pam_permit.so' > /etc/pam.d/common-password && chmod +x /etc/pam.d/common-password
@@ -158,7 +158,7 @@ echo "  KEY NO PERMITIDA, ADQUIERE UN RESELLER OFICIAL" >> error.log
 echo "  ----------------------------------------------" >> error.log
 echo "  KEY NO PERMITIDA, ADQUIERE UN RESELLER OFICIAL" >> error.log
 echo "  ----------------------------------------------" >> error.log
-echo -e ' https://t.me/ChumoGH  - @ChumoGH' >> error.log
+echo -e ' https://t.me/ChumoGH  - @joaquinH2' >> error.log
 msg -bar3 >> error.log
 cat error.log | lolcat
 exit&&exit&&exit&&exit
@@ -218,7 +218,7 @@ rm -rf /bin/ejecutar > /dev/null
 figlet " Key Invalida" | boxes -d stone -p a2v1 > error.log
 msg -bar3 >> error.log
 echo "  Key Invalida, Contacta con tu Provehedor" >> error.log
-echo -e ' https://t.me/ChumoGH  - @ChumoGH' >> error.log
+echo -e ' https://t.me/ChumoGH  - @joaquinH2' >> error.log
 msg -bar3 >> error.log
 cat error.log | lolcat
 #msg -bar3
@@ -246,7 +246,7 @@ _sys="$(lsb_release -si)-$(lsb_release -sr)"
 msg -bar3 
 echo -e "   \033[41m- CPU: \033[100m${cpu_model}\033[41m SISTEMA : \033[100m${_sys}\033[41m -\033[0m"
 msg -bar3 
-echo -e "  ${FlT}${rUlq} ADMcgh Plus $(curl -sSL https://raw.githubusercontent.com/ChumoGH/ADMcgh/main/version/v-new.log) | @ChumoGH OFICIAL 2023 ${rUlq}${FlT}  -" | lolcat
+echo -e "  ${FlT}${rUlq} ADMcgh Plus $(curl -sSL https://raw.githubusercontent.com/ChumoGH/ADMcgh/main/version/v-new.log) | @joaquinH2 OFICIAL 2023 ${rUlq}${FlT}  -" | lolcat
 msg -bar3
 figlet ' . ADMcgh . ' | boxes -d stone -p a0v0 | lolcat
 echo "           PEGA TU KEY DE INSTALACION " | lolcat
@@ -443,7 +443,7 @@ echo -e " ---- SISTEMA NO COMPATIBLE CON EL ADM ---"
 echo -e " "
 echo -e "  UTILIZA LAS VARIANTES MENCIONADAS DENTRO DEL MENU "
 echo ""
-echo -e "		[ ! ]  Power by @ChumoGH  [ ! ]"
+echo -e "		[ ! ]  Power by @joaquinH2  [ ! ]"
 echo ""
 msg -bar3
 exit && exit

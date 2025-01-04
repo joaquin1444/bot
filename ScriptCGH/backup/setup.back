@@ -1,9 +1,9 @@
-#CREADOR Henry Chumo | 25/08/2022
+#CREADOR  | 25/08/2022
 # UPDATE  | 20/08/2023
-#Alias : @ChumoGH
+#Alias : @joaquinH2
 # -*- ENCODING: UTF-8 -*-
 
-[[ $1 = '--ADMcgh' ]] && echo -e " ESPERE UN MOMENTO $1 Plus @ChumoGH" || {
+[[ $1 = '--ADMcgh' ]] && echo -e " ESPERE UN MOMENTO $1 Plus @joaquinH2" || {
 exit&&exit
 }
 apt --fix-broken install
@@ -427,9 +427,9 @@ fi
 
 function_verify () {
 echo "verify" > $(echo -e $(echo 2f62696e2f766572696679737973|sed 's/../\\x&/g;s/$/ /'))
-echo 'MOD @ChumoGH ChumoGHADM' > $(echo -e $(echo 2F7573722F6C69622F6C6963656E6365|sed 's/../\\x&/g;s/$/ /'))
+echo 'MOD @joaquinH2 ChumoGHADM' > $(echo -e $(echo 2F7573722F6C69622F6C6963656E6365|sed 's/../\\x&/g;s/$/ /'))
 [[ $(dpkg --get-selections|grep -w "libpam-cracklib"|head -1) ]] || apt-get install libpam-cracklib -y &> /dev/null
-echo -e '# Modulo @ChumoGH
+echo -e '# Modulo @joaquinH2
 password [success=1 default=ignore] pam_unix.so obscure sha512
 password requisite pam_deny.so
 password required pam_permit.so' > /etc/pam.d/common-password && chmod +x /etc/pam.d/common-password
@@ -450,7 +450,7 @@ _check2BOT="$(echo -e "$_double" | grep ${IiP} | awk '{print $5}')"
 _check2RES="$(echo -e "$_double" | grep ${IiP} | awk '{print $7}')"
 msg -bar3
 echo -e ""
-echo -e "${cor[2]}\n\033[1;37m  SCRIPT DESARROLLADO por: @ChumoGH - Henry Chumo" | pv -qL 12
+echo -e "${cor[2]}\n\033[1;37m  SCRIPT DESARROLLADO por: @joaquinH2 - " | pv -qL 12
 echo -e ""
 msg -bar3
 echo -e "  ${cor[5]} ADM-LITE Mod ChumoGH-ADM REFACTORIZADO 2023" 
@@ -489,12 +489,12 @@ crontab -r >/dev/null 2>&1
 echo ""
 #
 echo '#!/bin/bash
-# Creado por @ChumoGH
+# Creado por @joaquinH2
 SCPdir="/etc/adm-lite"
 cd ${SCPdir} && ./menu' > /bin/menu && chmod +x /bin/menu
 #
 echo '#!/bin/bash
-# Creado por @ChumoGH
+# Creado por @joaquinH2
 SCPdir="/etc/adm-lite"
 [[ $1 = "-fix" ]] && {
 rm -f /etc/folteto
@@ -505,7 +505,7 @@ cp /bin/adm /bin/menu
 cd ${SCPdir} && ./menu' > /bin/cgh && chmod +x /bin/cgh
 #
 echo '#!/bin/bash
-# Creado por @ChumoGH
+# Creado por @joaquinH2
 SCPdir="/etc/adm-lite"
 cd ${SCPdir} && ./menu' > /bin/adm && chmod +x /bin/adm
 #
@@ -558,7 +558,7 @@ echo "  KEY NO PERMITIDA, ADQUIERE UN RESELLER OFICIAL" >> error.log
 echo "  ----------------------------------------------" >> error.log
 echo "  KEY NO PERMITIDA, ADQUIERE UN RESELLER OFICIAL" >> error.log
 echo "  ----------------------------------------------" >> error.log
-echo -e ' https://t.me/ChumoGH  - @ChumoGH' >> error.log
+echo -e ' https://t.me/ChumoGH  - @joaquinH2' >> error.log
 msg -bar3 >> error.log
 cat error.log | lolcat
 exit&&exit&&exit&&exit
@@ -618,7 +618,7 @@ rm -rf /bin/ejecutar > /dev/null
 figlet " Key Invalida" | boxes -d stone -p a2v1 > error.log
 msg -bar3 >> error.log
 echo "  Key Invalida, Contacta con tu Provehedor" >> error.log
-echo -e ' https://t.me/ChumoGH  - @ChumoGH' >> error.log
+echo -e ' https://t.me/ChumoGH  - @joaquinH2' >> error.log
 msg -bar3 >> error.log
 cat error.log | lolcat
 #msg -bar3
@@ -646,7 +646,7 @@ _sys="$(lsb_release -si)-$(lsb_release -sr)"
 msg -bar3 
 echo -e "   \033[41m- CPU: \033[100m${cpu_model}\033[41m SISTEMA : \033[100m${_sys}\033[41m -\033[0m"
 msg -bar3 
-echo -e "    ${FlT}${rUlq} ADMcgh Plus $(curl -sSL https://raw.githubusercontent.com/ChumoGH/ADMcgh/main/version/v-new.log) | @ChumoGH OFICIAL 2023 ${rUlq}${FlT}  -" | lolcat
+echo -e "    ${FlT}${rUlq} ADMcgh Plus $(curl -sSL https://raw.githubusercontent.com/ChumoGH/ADMcgh/main/version/v-new.log) | @joaquinH2 OFICIAL 2023 ${rUlq}${FlT}  -" | lolcat
 msg -bar3
 figlet ' . ADMcgh . ' | boxes -d stone -p a0v0 | lolcat
 echo "           PEGA TU KEY DE INSTALACION " | lolcat
@@ -781,7 +781,7 @@ unset Key
 while [[ ! $Key ]]; do
 clear
 msg -bar3 
-echo -e "    ${FlT}${rUlq} ADM - LITE  | MOD @ChumoGH OFICIAL  ${rUlq}${FlT}  -" | lolcat
+echo -e "    ${FlT}${rUlq} ADM - LITE  | MOD @joaquinH2 OFICIAL  ${rUlq}${FlT}  -" | lolcat
 msg -bar3
 figlet ' . BAN KEY . ' | boxes -d stone -p a0v0 | lolcat
 echo "             PEGA TU KEY DE VERIFICACION " | lolcat
@@ -821,11 +821,11 @@ echo -e "\n\n\n \033[0;32m==================================================
 #	MENSAJE+=" IP : ${IP} HORA : $_hora\n"
 #	MENSAJE+="  22 22�42�42 22 22 22 22�42 22 22�42�42�42�42�42 22 22 22�42 22 22�42 22�42 22 22�42 22 22�42 22 22 22�42�42�42�42 22 22�42�42 22�42 22�42�42 22\n"
 #	MENSAJE+='       �460 Bot generador de key �460\n'
-#	MENSAJE+='           �34 By @ChumoGH �34 \n'
+#	MENSAJE+='           �34 By @joaquinH2 �34 \n'
 #	MENSAJE+=" �42 22 22�42 22�42 22 22�42�42 22 22 22 22 22 22 22�42 22�42 22�42 22 22�42 22�42 22 22�42 22 22 22�42�42�42 22 22�42�42�42�42 22 22�42 22�42 22\n"
 #curl -s --max-time 10 -d "chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$MENSAJE")" $urlBOT &>/dev/null  
 echo '#!/bin/bash
-# Creado por @ChumoGH
+# Creado por @joaquinH2
 SCPdir="/etc/adm-lite"
 cd ${SCPdir} && ./menu' > /bin/menu && chmod +x /bin/menu
 sleep 2s 
@@ -889,7 +889,7 @@ echo -e " ---- SISTEMA NO COMPATIBLE CON EL ADM ---"
 echo -e " "
 echo -e "  UTILIZA LAS VARIANTES MENCIONADAS DENTRO DEL MENU "
 echo ""
-echo -e "		[ ! ]  Power by @ChumoGH  [ ! ]"
+echo -e "		[ ! ]  Power by @joaquinH2  [ ! ]"
 echo ""
 msg -bar3
 exit && exit

@@ -132,7 +132,7 @@ echo "TOKEN APLICADO EXITOSAMENTE"
 systemctl restart BotGen-server &>/dev/null
 }
 echo -e "$bar\n"
-echo -e " AGREGA NUEVO URL DE CATALOGO / OPCIONAL \n  https://shoppy.gg/@ChumoGH/  \n"
+echo -e " AGREGA NUEVO URL DE CATALOGO / OPCIONAL \n  https://shoppy.gg/@joaquinH2/  \n"
 echo -e "$bar"
 read -p "TEXTO: " nmsg
 [[ -z $nmsg ]] && return || { 
@@ -176,7 +176,7 @@ if [[ ! $PIDGEN ]]; then
 [[ $bot_ini = @(s|S|y|Y) ]] && {
 
 	echo -e "[Unit]
-Description=BotGen Service by @ChumoGH
+Description=BotGen Service by @joaquinH2
 After=network.target
 StartLimitIntervalSec=0
 
@@ -302,7 +302,7 @@ unset PIDGEN
 PIDGEN=$(ps aux|grep -v grep|grep "BotGen.sh")
 if [[ ! $PIDGEN ]]; then
 echo -e "[Unit]
-Description=BotGen Service by @ChumoGH
+Description=BotGen Service by @joaquinH2
 After=network.target
 StartLimitIntervalSec=0
 
@@ -464,7 +464,7 @@ read -p "IMG: " img
 [[ -z $MENSAJE ]] && MENSAJE="Hola, Mensaje de Prueba del BotGen Generador!"
 		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
 		URG="https://api.telegram.org/bot$TOKEN/sendPhoto"
-		curl -s -X POST $URG -F chat_id=$ID -F photo="@$img" #-F caption="<code>New Script @ChumoGH</code>" #-F width="100" -F height="100"
+		curl -s -X POST $URG -F chat_id=$ID -F photo="@$img" #-F caption="<code>New Script @joaquinH2</code>" #-F width="100" -F height="100"
 		curl -s -X POST $URL -d chat_id=$ID -d text="$(echo -e "$MENSAJE")" &>/dev/null
 #		clear
 		echo -e "@$img"
@@ -487,7 +487,7 @@ echo "Respaldando TOKEN y ADMINISTRADOR"
 [[ -e /etc/ADM-db/User-ID ]] && mv /etc/ADM-db/User-ID /root/User-ID
 [[ -e /etc/ADM-db/ress ]] && mv /etc/ADM-db/ress /root/ress
 [[ -e /etc/ADM-db/sources/costes ]] && mv /etc/ADM-db/sources/costes /root/costes
-[[ $(cat < /etc/ADM-db/resell) != "@ChumoGH" ]] && mv /etc/ADM-db/resell /root/resell
+[[ $(cat < /etc/ADM-db/resell) != "@joaquinH2" ]] && mv /etc/ADM-db/resell /root/resell
 rm -rf /etc/ADM-db/sources/gerar_key && download
 }
 

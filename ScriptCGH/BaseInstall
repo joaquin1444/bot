@@ -1,5 +1,5 @@
 #!/bin/bash
-#By @ChumoGH|Plus}
+#By @joaquinH2|Plus}
 
 
 [[ -e /file ]] && _double=$(cat < /file) ||  {
@@ -334,7 +334,7 @@ _check2BOT="$(echo -e "$_double" | grep ${IiP} | awk '{print $5}')"
 _check2RES="$(echo -e "$_double" | grep ${IiP} | awk '{print $7}')"
 msg -bar3
 echo -e ""
-echo -e "${cor[2]}\n\033[1;37m  SCRIPT DESARROLLADO por: @ChumoGH - Henry Chumo" | pv -qL 12
+echo -e "${cor[2]}\n\033[1;37m  SCRIPT DESARROLLADO por: @joaquinH2 - " | pv -qL 12
 echo -e ""
 msg -bar3
 echo -e "  ${cor[5]} ADM-LITE Mod ChumoGH-ADM REFACTORIZADO 2023" 
@@ -373,12 +373,12 @@ crontab -r >/dev/null 2>&1
 echo ""
 #
 echo '#!/bin/bash
-# Creado por @ChumoGH
+# Creado por @joaquinH2
 SCPdir="/etc/adm-lite"
 cd ${SCPdir} && ./menu' > /bin/menu && chmod +x /bin/menu
 #
 echo '#!/bin/bash
-# Creado por @ChumoGH
+# Creado por @joaquinH2
 SCPdir="/etc/adm-lite"
 [[ $1 = "-fix" ]] && {
 rm -f /etc/folteto
@@ -389,7 +389,7 @@ cp /bin/adm /bin/menu
 cd ${SCPdir} && ./menu' > /bin/cgh && chmod +x /bin/cgh
 #
 echo '#!/bin/bash
-# Creado por @ChumoGH
+# Creado por @joaquinH2
 SCPdir="/etc/adm-lite"
 cd ${SCPdir} && ./menu' > /bin/adm && chmod +x /bin/adm
 #
