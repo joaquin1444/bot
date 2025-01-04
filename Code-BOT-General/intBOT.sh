@@ -66,7 +66,7 @@ permited=$(curl -sSL "${link}/joaquin1444/bot/master/Control/Control-Bot")
   echo -e "\n\n\n\e[31m====================================================="
   echo -e "\e[31m      ¡LA IP $(wget -qO- ipv4.icanhazip.com) FUE RECHAZADA!"
   echo -e "     $link No AUTORIZADA el ACCESO "
-  echo -e " SI DESEAS USAR EL BOTGEN CONTACTE A @Premium"
+  echo -e " SI DESEAS USAR EL BOTGEN CONTACTE A @joaquinH2"
   echo -e "\e[31m=====================================================\n\n\n\e[0m"
   [[ -e "/bin/ShellBot.sh" ]] && rm -f /bin/ShellBot.sh
     exit 1
@@ -76,8 +76,8 @@ permited=$(curl -sSL "${link}/joaquin1444/bot/master/Control/Control-Bot")
   echo -e "\n\n\n\e[32m====================================================="
   echo -e "\e[32m      ¡LA IP $(wget -qO- ipv4.icanhazip.com) ESTA AUTORIZADA!"
   echo -e "      Mediante  $link "
-  echo -e " 	    Autorizada por @Premium "
-  echo -e "      SI DESEAS USAR EL BOTGEN CONTACTE A @Premium"
+  echo -e " 	    Autorizada por @joaquinH2 "
+  echo -e "      SI DESEAS USAR EL BOTGEN CONTACTE A @joaquinH2"
   echo -e "\e[32m=====================================================\n\n\n\e[0m"
   CIDdir="/etc/ADM-db" && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
   [[ -e /etc/nivbot ]] && { 
@@ -249,8 +249,8 @@ echo -ne "\033[1;31m[ ! ] RESTAURANDO DATOS DE ADMINISTRADOR "
 	[[ -e $HOME/Backup/limit ]] && mv $HOME/Backup/limit /etc/ADM-db/limit
 	[[ -e $HOME/Backup/num-key.cont ]] && mv $HOME/Backup/num-key.cont /etc/ADM-db/num-key.cont
 ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [FALLIDO]"
-[[ ! -e ${CIDdir}/resell ]] && echo "@Premium" > ${CIDdir}/resell
-[[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : emirjorge@premium.com" > /etc/mpayu && echo "51912345678" > /etc/numctc
+[[ ! -e ${CIDdir}/resell ]] && echo "@joaquinH2" > ${CIDdir}/resell
+[[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : ----" > /etc/mpayu && echo "3777277610" > /etc/numctc
 rm $HOME/lista-arq &>/dev/null
 systemctl restart BotGen-server &>/dev/null
 }
@@ -368,39 +368,43 @@ bot_gen
 }
 
 msj_prueba () {
+  TOKEN="$(cat /etc/ADM-db/token)"
+  ID="$(cat /etc/ADM-db/Admin-ID)"
 
-TOKEN="$(cat /etc/ADM-db/token)"
-ID="$(cat /etc/ADM-db/Admin-ID)"
-
-[[ -z $TOKEN ]] && {
-	clear
-	echo -e "$bar"
-	echo -e "\033[1;37m Aun no a ingresado el token\n No se puede enviar ningun mensaje!"
-	echo -e "$bar"
-	read foo
-} || {
-	[[ -z $ID ]] && {
-		clear
-		echo -e "$bar"
-		echo -e "\033[1;37m Aun no a ingresado el ID\n No se puede enviar ningun mensaje!"
-		echo -e "$bar"
-		read foo
-	} || {
-		MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		MENSAJE+="Esto es un mesaje de prueba!\n"
-		MENSAJE+="$bar\n"
-		URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-		curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
-		clear
-		echo -e "---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
-		echo -e "\033[1;37m Mensaje enviado Exitosamente...!"
-		echo -e "$bar"
-		sleep 3s
-	}
+  # Verifica si el token está vacío
+  if [[ -z $TOKEN ]]; then
+    clear
+    echo -e "$bar"
+    echo -e "\033[1;37m Aún no ha ingresado el token\n No se puede enviar ningún mensaje!"
+    echo -e "$bar"
+    read -p "Presione Enter para continuar..." foo
+  # Verifica si el ID está vacío
+  elif [[ -z $ID ]]; then
+    clear
+    echo -e "$bar"
+    echo -e "\033[1;37m Aún no ha ingresado el ID\n No se puede enviar ningún mensaje!"
+    echo -e "$bar"
+    read -p "Presione Enter para continuar..." foo
+  else
+    # Si ambos están presentes, envía el mensaje
+    MENSAJE="---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
+    MENSAJE+="Esto es un mensaje de prueba!\n"
+    MENSAJE+="$bar\n"
+    URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+    
+    # Envío del mensaje a través de la API de Telegram
+    curl -s -X POST $URL -d chat_id=$ID -d text="$MENSAJE" &>/dev/null
+    
+    # Mensaje de éxito
+    clear
+    echo -e "---------📩𝙈𝙀𝙉𝙎𝘼𝙅𝙀 𝙍𝙀𝘾𝙄𝘽𝙄𝘿𝙊📩--------\n"
+    echo -e "\033[1;37m Mensaje enviado exitosamente...!"
+    echo -e "$bar"
+    sleep 3s
+  fi
+  bot_gen
 }
 
-bot_gen
-}
 
 addnewmss() {
 unset yesno

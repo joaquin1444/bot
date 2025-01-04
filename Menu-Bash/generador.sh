@@ -699,8 +699,8 @@ act_botgen() {
         [[ -e $HOME/Backup/num-key.cont ]] && mv $HOME/Backup/num-key.cont /etc/ADM-db/num-key.cont
     ) && echo -e "\033[1;32m [OK]" || echo -e "\033[1;31m [SIN DATOS]"
     rm -rf /root/Backup
-    [[ ! -e ${CIDdir}/resell ]] && echo "@Premium" > ${CIDdir}/resell
-    [[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : emirjorge@premium.com" > /etc/mpayu && echo "51912345678" > /etc/numctc
+    [[ ! -e ${CIDdir}/resell ]] && echo "@joaquinH2" > ${CIDdir}/resell
+    [[ ! -e $(cat < /etc/mpayu) ]] && echo "Paypal : emirjorge@joaquinH2.com" > /etc/mpayu && echo "51912345678" > /etc/numctc
     rm $HOME/lista-arq &>/dev/null
     systemctl restart BotGen-server &>/dev/null
     echo -ne "\033[1;37m Presione Enter para continuar" && read "Enter"
