@@ -1,0 +1,11 @@
+#CREADOR  | 25/08/2022
+# UPDATE  | 20/08/2023
+#Alias : @joaquinH2
+# -*- ENCODING: UTF-8 -*-
+
+apt --fix-broken install
+dpkg --configure -a
+export PATH=$PATH:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin:/usr/games;
+fecha=`date +"%d-%m-%y"`;
+SCPdir="/etc/adm-lite"
+SCPinstal="$HOME/install"
